@@ -4,37 +4,76 @@ using namespace std;
 
 int main(int agrc, char* agrv[])
 {
-	double lowerBound = -1.0;
-	double upperBound = 1.0;
-	int nodeNum = 14;
+	double lowerBound = 2.1;
+	double upperBound = 9.9;
+	int nodeNum = 8;
 	double stepSize = (upperBound - lowerBound) / (nodeNum-1);
-	
-	ofstream ofs;
-	ofs.open("UniformSamplingPoints.txt", ofstream::out);
-	for (int i = 0; i < nodeNum; i++)
+	int DIM = 3;
+
+	if (DIM==2)
 	{
-		double x = lowerBound + i*stepSize;
-		for (int j = 0; j < nodeNum; j++)
+		ofstream ofs;
+		ofs.open("UniformSamplingPoints.txt", ofstream::out);
+		for (int i = 0; i < nodeNum; i++)
 		{
-			double y = lowerBound + j*stepSize;
-			ofs << x << "\t" << y << endl;
-			cout << x << "\t" << y << endl;
+			double x = lowerBound + i*stepSize;
+			for (int j = 0; j < nodeNum; j++)
+			{
+				double y = lowerBound + j*stepSize;
+				ofs << x << "\t" << y << endl;
+				cout << x << "\t" << y << endl;
+			}
+		}
+		ofs << endl;
+
+		double errorPointBeginPos = lowerBound + stepSize / 2;
+		for (int i = 0; i < nodeNum - 1; i++)
+		{
+			double x = errorPointBeginPos + i*stepSize;
+
+			for (int j = 0; j < nodeNum - 1; j++)
+			{
+				double y = errorPointBeginPos + j*stepSize;
+
+				ofs << x << "\t" << y << endl;
+				cout << x << "\t" << y << endl;
+			}
 		}
 	}
-
-	ofs << endl;
-
-	double errorPointBeginPos = lowerBound + stepSize / 2;
-	for (int i = 0; i < nodeNum-1; i++)
+	if (DIM==3)
 	{
-		double x = errorPointBeginPos + i*stepSize;
-
-		for (int j = 0; j < nodeNum-1; j++)
+		ofstream ofs;
+		ofs.open("UniformSamplingPoints.txt", ofstream::out);
+		for (int i = 0; i < nodeNum; i++)
 		{
-			double y = errorPointBeginPos + j*stepSize;
-			
-			ofs << x << "\t" << y << endl;
-			cout << x << "\t" << y << endl;
+			double x = lowerBound + i*stepSize;
+			for (int j = 0; j < nodeNum; j++)
+			{
+				double y = lowerBound + j*stepSize;
+				for (int k = 0; k < nodeNum; k++)
+				{
+					double z = lowerBound + k*stepSize;
+					ofs << x << "\t" << y << "\t" << z << endl;
+					cout << x << "\t" << y << "\t" << z << endl;
+				}				
+			}
+		}
+		ofs << endl;
+
+		double errorPointBeginPos = lowerBound + stepSize / 2;
+		for (int i = 0; i < nodeNum - 1; i++)
+		{
+			double x = errorPointBeginPos + i*stepSize;
+			for (int j = 0; j < nodeNum - 1; j++)
+			{
+				double y = errorPointBeginPos + j*stepSize;
+				for (int k = 0; k < nodeNum-1; k++)
+				{
+					double z = errorPointBeginPos + k*stepSize;
+					ofs << x << "\t" << y << "\t" << z << endl;
+					cout << x << "\t" << y << "\t" << z << endl;
+				}
+			}
 		}
 	}
 
