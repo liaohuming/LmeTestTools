@@ -2,13 +2,16 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <stdlib.h>
 using namespace std;
 
 int main(int argc, char* argv[])
-{
-	ifstream infile;
-
-	int DIM = 3;
+{	
+	int DIM = 2;
+	if (argc>1)
+	{
+		DIM = atoi(argv[1]);
+	}
 
 	// Read sampling points
 	vector<string> x1_vector;
@@ -16,6 +19,7 @@ int main(int argc, char* argv[])
 	vector<string> x3_vector;
 	vector<string> y_vector;
 
+	ifstream infile;
 	infile.open("RBF-Init-Data-Points.txt");
 	if (!infile.is_open())
 	{
@@ -70,7 +74,7 @@ int main(int argc, char* argv[])
 	// Output sampling points,最后不输出空行
 	cout << "Isight_sample_points_data" << endl;
 	ofstream ofs_sampling_points;
-	ofs_sampling_points.open("SamplePoints.txt", ofstream::out);
+	ofs_sampling_points.open("SamplePoints.txt", ios::out | ios::trunc);
 	for (int i = 0; i < x1_vector.size(); i++)
 	{
 		if (DIM==2)
@@ -156,10 +160,12 @@ int main(int argc, char* argv[])
 	}
 	infile.close();
 
+// 误差分析点在Uniform_sampler中生成，此处不需要再输出
+/*
 	// Output error analysis points，最后不输出空行
 	cout << "ErrorPoints" << endl;
 	ofstream ofs_error_points;
-	ofs_error_points.open("ErrorPoints.txt", ofstream::out);
+	ofs_error_points.open("ErrorPoints.txt", ios::out | ios::trunc);
 	for (int i = 0; i < x1_error_vector.size(); i++)
 	{
 		if (DIM==2)
@@ -189,11 +195,12 @@ int main(int argc, char* argv[])
 		
 	}
 	ofs_error_points.close();
+*/
 
 	// Output error actual value，最后不输出空行
 	cout << "ErrorPoints_actual_value.txt" << endl;
 	ofstream ofs_error_points_actual_value;
-	ofs_error_points_actual_value.open("ErrorPoints_actual_value.txt", ofstream::out);
+	ofs_error_points_actual_value.open("ErrorPoints_actual_value.txt", ios::out | ios::trunc);
 	for (int i = 0; i < y_error_vector.size(); i++)//
 	{
 		if (i < y_error_vector.size()-1)
@@ -404,13 +411,22 @@ int main(int argc, char* argv[])
 
 	cout << "Isight_predicted_data" << endl;
 	ofstream ofs;
-	ofs.open("Isight_predicted_data.txt", ofstream::out);
+	ofs.open("Isight_predicted_data.txt", ios::out | ios::trunc);
 	for (int i = 0; i < Isight_predicted_data.size(); i++)
 	{
-		ofs << Isight_predicted_data[i] << endl;	//最后一行输出空行
-		cout << Isight_predicted_data[i] << endl;
+		if (i < Isight_predicted_data.size()-1)
+		{
+			ofs << Isight_predicted_data[i] << endl;
+			cout << Isight_predicted_data[i] << endl;
+		}
+		if (i == Isight_predicted_data.size()-1)
+		{
+			ofs << Isight_predicted_data[i];
+			cout << Isight_predicted_data[i];
+		}
+		
 	}
 	ofs.close();
-	system("pause");
+	//system("pause");
 	return 0;
 }
