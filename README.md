@@ -34,6 +34,16 @@
 第二增加了 h_all.clear()，避免了在循环寻找每个误差分析点最小h的时候其它误差分析点h的影响。
 
 
+2016年4月29日18:37:27
+* 原Isight_data_reader中，缺少下列任何一个文件时将无法继续处理数据得到Isight_predicted_data.txt，修改为，当缺少文件时仅给出提示，继续处理其他数据，生成Isight_predicted_data.txt，这样做的目的是，有的时候并不需要同时处理7个代理模型的数据，这个时候就不会同时有7份数据，为了处理这样的情况，做此修改
+> RBF-Predicted-Error-Points.txt
+> RSM-2-Predicted-Error-Points.txt
+> RSM-4-Predicted-Error-Points.txt
+> Kriging1-Predicted-Error-Points.txt
+> Kriging2-Predicted-Error-Points.txt
+> Kriging3-Predicted-Error-Points.txt
+> Kriging4-Predicted-Error-Points.txt
+
 
 
 

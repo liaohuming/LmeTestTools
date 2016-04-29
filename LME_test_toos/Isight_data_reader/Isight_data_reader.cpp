@@ -23,54 +23,57 @@ int main(int argc, char* argv[])
 	infile.open("RBF-Init-Data-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open RBF-Init-Data-Points.txt" << endl;
+		//return -1;
 	}
 
 	int rowNumOfSamplingPoints = 0;
-	string lineStrOfSamplingPoints = "";
-	getline(infile, lineStrOfSamplingPoints);
-	while (lineStrOfSamplingPoints !="")
+	while (!infile.eof())
 	{
-		if (rowNumOfSamplingPoints == 0 )	// 第一行不读取
-		{
-			rowNumOfSamplingPoints++;
-		}
-		else
-		{
-			if (DIM==2)
-			{
-				char x1_char[255];
-				char x2_char[255];
-				char y_char[255];
-				sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(y_char));
-				string x1_str = string(x1_char);
-				string x2_str = string(x2_char);
-				string y_str = string(y_char);
-				x1_vector.push_back(x1_str);
-				x2_vector.push_back(x2_str);
-				y_vector.push_back(y_str);
-			}
-			if (DIM==3)
-			{
-				char x1_char[255];
-				char x2_char[255];
-				char x3_char[255];
-				char y_char[255];
-				sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(y_char));
-				string x1_str = string(x1_char);
-				string x2_str = string(x2_char);
-				string x3_str = string(x3_char);
-				string y_str = string(y_char);
-				x1_vector.push_back(x1_str);
-				x2_vector.push_back(x2_str);
-				x3_vector.push_back(x3_str);
-				y_vector.push_back(y_str);
-			}
-		}
+		string lineStrOfSamplingPoints = "";
 		getline(infile, lineStrOfSamplingPoints);
+		if (lineStrOfSamplingPoints != "")
+		{
+			if (rowNumOfSamplingPoints == 0)	// 第一行不读取
+			{
+				rowNumOfSamplingPoints++;
+			}
+			else
+			{
+				if (DIM == 2)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					y_vector.push_back(y_str);
+				}
+				if (DIM == 3)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					y_vector.push_back(y_str);
+				}
+			}
+		}
 	}
 	infile.close();
-
+	
 	// Output sampling points,最后不输出空行
 	cout << "Isight_sample_points_data" << endl;
 	ofstream ofs_sampling_points;
@@ -112,53 +115,57 @@ int main(int argc, char* argv[])
 	infile.open("RBF-Actual-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open RBF-Actual-Error-Points.txt" << endl;
+		//return -1;
 	}
 
 	int rowNumOfErrorPoints = 0;
-	string lineStrOfErrorPoints = "";
-	getline(infile, lineStrOfErrorPoints);
-	while (lineStrOfErrorPoints != "")
+	while (!infile.eof())
 	{
-		if (rowNumOfErrorPoints == 0)	// 第一行不读取
-		{
-			rowNumOfErrorPoints++;
-		}
-		else
-		{
-			if (DIM==2)
-			{
-				char x1_char[255];
-				char x2_char[255];
-				char y_char[255];
-				sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(y_char));
-				string x1_str = string(x1_char);
-				string x2_str = string(x2_char);
-				string y_str = string(y_char);
-				x1_error_vector.push_back(x1_str);
-				x2_error_vector.push_back(x2_str);
-				y_error_vector.push_back(y_str);
-			}
-			if (DIM==3)
-			{
-				char x1_char[255];
-				char x2_char[255];
-				char x3_char[255];
-				char y_char[255];
-				sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(y_char));
-				string x1_str = string(x1_char);
-				string x2_str = string(x2_char);
-				string x3_str = string(x3_char);
-				string y_str = string(y_char);
-				x1_error_vector.push_back(x1_str);
-				x2_error_vector.push_back(x2_str);
-				x3_error_vector.push_back(x3_str);
-				y_error_vector.push_back(y_str);
-			}
-		}
+		string lineStrOfErrorPoints = "";
 		getline(infile, lineStrOfErrorPoints);
+		if (lineStrOfErrorPoints != "")
+		{
+			if (rowNumOfErrorPoints == 0)	// 第一行不读取
+			{
+				rowNumOfErrorPoints++;
+			}
+			else
+			{
+				if (DIM == 2)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					y_error_vector.push_back(y_str);
+				}
+				if (DIM == 3)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					y_error_vector.push_back(y_str);
+				}
+			}
+		}
 	}
 	infile.close();
+	
 
 // 误差分析点在Uniform_sampler中生成，此处不需要再输出
 /*
@@ -224,20 +231,21 @@ int main(int argc, char* argv[])
 	infile.open("RBF-Predicted-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open RBF-Predicted-Error-Points.txt" << endl;
+		//return -1;
 	}
 	while (!infile.eof())
-	{		
+	{
 		char y_char[255];
 		string lineStr = "";
 		getline(infile, lineStr);
 		if (lineStr != "")
 		{
-			if (DIM==2)
+			if (DIM == 2)
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%s", &(y_char));
 			}
-			if (DIM==3)
+			if (DIM == 3)
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
@@ -248,10 +256,11 @@ int main(int argc, char* argv[])
 	infile.close();
 
 	// Read RSM-2 Predicted Value
-	infile.open("RSM-2-Predicted-Error-Points.txt");
+	infile.open("RSM2-Predicted-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open RSM2-Predicted-Error-Points.txt" << endl;
+		//return -1;
 	}
 	while (!infile.eof())
 	{
@@ -275,17 +284,18 @@ int main(int argc, char* argv[])
 	infile.close();
 
 	// Read RSM-4 Predicted Value
-	infile.open("RSM-4-Predicted-Error-Points.txt");
+	infile.open("RSM4-Predicted-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open RSM4-Predicted-Error-Points.txt" << endl;
+		//return -1;
 	}
 	while (!infile.eof())
 	{
 		char y_char[255];
 		string lineStr = "";
 		getline(infile, lineStr);
-		if (lineStr!="")
+		if (lineStr != "")
 		{
 			if (DIM == 2)
 			{
@@ -300,12 +310,13 @@ int main(int argc, char* argv[])
 		}
 	}
 	infile.close();
-
+	
 	// Read Kriging1 Predicted Value
 	infile.open("Kriging1-Predicted-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open Kriging1-Predicted-Error-Points.txt" << endl;
+		//return -1;
 	}
 	while (!infile.eof())
 	{
@@ -332,7 +343,8 @@ int main(int argc, char* argv[])
 	infile.open("Kriging2-Predicted-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open Kriging2-Predicted-Error-Points.txt" << endl;
+		//return -1;
 	}
 	while (!infile.eof())
 	{
@@ -359,7 +371,8 @@ int main(int argc, char* argv[])
 	infile.open("Kriging3-Predicted-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open Kriging3-Predicted-Error-Points.txt" << endl;
+		//return -1;
 	}
 	while (!infile.eof())
 	{
@@ -386,7 +399,8 @@ int main(int argc, char* argv[])
 	infile.open("Kriging4-Predicted-Error-Points.txt");
 	if (!infile.is_open())
 	{
-		return -1;
+		cout << "Can not open Kriging4-Predicted-Error-Points.txt" << endl;
+		//return -1;
 	}
 	while (!infile.eof())
 	{
