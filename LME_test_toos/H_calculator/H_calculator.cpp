@@ -100,9 +100,12 @@ int ReadErrorPoints()
 			double x2_temp = 0;
 			string lineStr = "";
 			getline(infile, lineStr);
-			sscanf(lineStr.c_str(), "%lg\t%lg", &(x1_temp), &(x2_temp));
-			x1_error.push_back(x1_temp);
-			x2_error.push_back(x2_temp);
+			if (lineStr != "")
+			{
+				sscanf(lineStr.c_str(), "%lg\t%lg", &(x1_temp), &(x2_temp));
+				x1_error.push_back(x1_temp);
+				x2_error.push_back(x2_temp);
+			}
 		}
 		if (DIM == 3)
 		{
@@ -111,10 +114,13 @@ int ReadErrorPoints()
 			double x3_temp = 0;
 			string lineStr = "";
 			getline(infile, lineStr);
-			sscanf(lineStr.c_str(), "%lg\t%lg\t%lg", &(x1_temp), &(x2_temp), &(x3_temp));
-			x1_error.push_back(x1_temp);
-			x2_error.push_back(x2_temp);
-			x3_error.push_back(x3_temp);
+			if (lineStr != "")
+			{
+				sscanf(lineStr.c_str(), "%lg\t%lg\t%lg", &(x1_temp), &(x2_temp), &(x3_temp));
+				x1_error.push_back(x1_temp);
+				x2_error.push_back(x2_temp);
+				x3_error.push_back(x3_temp);
+			}
 		}
 	}
 	infile.close();
@@ -126,6 +132,7 @@ void H_calculator()
 {
 	for (int i = 0; i < x1_error.size(); i++)
 	{
+		h_all.clear();
 		if (DIM == 2)
 		{
 			double x1 = x1_error[i];
