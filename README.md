@@ -37,20 +37,102 @@
 2016年4月29日18:37:27
 
 * 原Isight_data_reader中，缺少下列任何一个文件时将无法继续处理数据得到Isight_predicted_data.txt，修改为，当缺少文件时仅给出提示，继续处理其他数据，生成Isight_predicted_data.txt，这样做的目的是，有的时候并不需要同时处理7个代理模型的数据，这个时候就不会同时有7份数据，为了处理这样的情况，做此修改
+```cpp
+RBF-Predicted-Error-Points.txt
+RSM2-Predicted-Error-Points.txt
+RSM4-Predicted-Error-Points.txt
+Kriging1-Predicted-Error-Points.txt
+Kriging2-Predicted-Error-Points.txt
+Kriging3-Predicted-Error-Points.txt
+Kriging4-Predicted-Error-Points.txt
+```
 
-> RBF-Predicted-Error-Points.txt
 
-> RSM-2-Predicted-Error-Points.txt
+2016年5月5日10:42:56
 
-> RSM-4-Predicted-Error-Points.txt
+* H_calculator更改了h的计算方法，原h是计算每个error point在样本空间中到sample point的最近距离，修正为寻找error point（设ep1）最近的sample point（设sp1） 然后在样本空间中寻找离sp1最近的sp2，计算sp1到sp2的距离h，这个h即为ep1的h，具体实现通过给error point和sample point创建两个结构体进行实现
 
-> Kriging1-Predicted-Error-Points.txt
+* Error_analysor修正了一个bug，取绝对值函数的使用错误，原来是用abs(double x)，这在windows下使用的时候并没有出错，当放到linux上gcc编译的时候，发现同样的公式算出来的数据对不上，在用gcc编译时，double类型的数据用abs()来算会出现数据截断，因为abs()是对int类型的取绝对值函数，要保证代码的正确性应该用fabs()来对double的数据进行取绝对值
 
-> Kriging2-Predicted-Error-Points.txt
+* 对double数组进行递增排序的算法学习
 
-> Kriging3-Predicted-Error-Points.txt
+```cpp
+int Cmp(const void *a, const void *b)
+{
+	return *(double *)a > *(double *)b ? 1 : -1;
+}
 
-> Kriging4-Predicted-Error-Points.txt
+void CalcSample_H(int id)
+{
+	double *h_all = new double[x_sp.size()];
+	for (int i = 0; i < x_sp.size(); i++)
+	{
+		double h_temp = 0.0;
+		if (DIM == 2)
+		{
+			h_temp = sqrt((x_sp[id].x[0] - x_sp[i].x[0])*(x_sp[id].x[0] - x_sp[i].x[0]) +
+				(x_sp[id].x[1] - x_sp[i].x[1])*(x_sp[id].x[1] - x_sp[i].x[1]));
+			h_all[i] = h_temp;
+		}
+		if (DIM == 3)
+		{
+			h_temp = sqrt((x_sp[id].x[0] - x_sp[i].x[0])*(x_sp[id].x[0] - x_sp[i].x[0]) +
+				(x_sp[id].x[1] - x_sp[i].x[1])*(x_sp[id].x[1] - x_sp[i].x[1]) +
+				(x_sp[id].x[2] - x_sp[i].x[2])*(x_sp[id].x[2] - x_sp[i].x[2]));
+			h_all[i] = h_temp;
+		}
+	}
+	qsort(h_all, x_sp.size(), sizeof(h_all[0]), Cmp);	// 从小到大排序
+	x_sp[id].h_min = h_all[1];	// 取第二个h作为该点的最小h，因为第一个是到该点本身的距离，为0
+	delete[]h_all;
+}
+```
+
+* lme_test主程序，修改了若干问题：
+（1）修改了当h非常小时的特例处理情况，如果h非常小ep的预估值就用邻近它的sp的响应值代替（原来的做法是将ep代入已知的方程计算得出响应，现在测试过程这个方程是已知的，但是在实际工程应用的时候这个方程是未知的，所以如果采用代入计算的方法是没有方法得到预估值的，所以存在逻辑错误，所以给h的判断值定非常小，H_TOLERANCE = 1.0e-5，如果h比这个数还小，说明几乎和sp点重合，因此用sp的响应值代替ep的预估值是合理和正确的）
+（2）修改了输出出来中显示ep真实响应值的方法，原方法是定义了已知的测试函数，将ep代入该函数公式计算得到响应值，从而输出显示，同上，这样也是存在逻辑错误的，当公式不知道的时候就无法显示了，而其实ep的真实响应已经通过前一阶段的有限元分析提供了，这个时候只需要把结果读进来即可，现在的实现方案也是通过ep和sp的struct来实现的
+（3）将读取数据、计算h、lme计算、误差分析都合并至lme_test主程序，并优化了输出显示，改善了操作体验和显示体验
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

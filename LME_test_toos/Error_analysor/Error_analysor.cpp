@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	//IsightErrorAnalysis();
 	AllErrorAnalysis();
 
-	//system("pause");
+	system("pause");
 	return 0;
 }
 
@@ -140,7 +140,7 @@ void IsightErrorAnalysis()
 	double u_mean = 0;
 	for (int i = 0; i < u.size(); i++)
 	{
-		u_mean += abs(u[i]);
+		u_mean += fabs(u[i]);
 	}
 	u_mean = u_mean / u.size();
 
@@ -256,7 +256,7 @@ void AllErrorAnalysis()
 	double u_mean = 0;
 	for (int i = 0; i < u.size(); i++)
 	{
-		u_mean += abs(u[i]);
+		u_mean += fabs(u[i]);
 	}
 	u_mean = u_mean / u.size();
 
@@ -276,8 +276,10 @@ void AllErrorAnalysis()
 		for (int j = 0; j < u.size(); j++)
 		{
 			numerator += (u[j] - uh_n[i][j])*(u[j] - uh_n[i][j]);
-			denominator_Math_error += u[j] * u[j];
+			denominator_Math_error += (u[j]*u[j]);
 			denominator_R_square += (u[j] - u_mean)*(u[j] - u_mean);
+			cout << "u_mean = " << u_mean << " u[j] = " << u[j] << endl;
+			cout << denominator_R_square << endl;
 		}
 		Math_error = sqrt(numerator / denominator_Math_error);
 		R_square = 1 - numerator / denominator_R_square;

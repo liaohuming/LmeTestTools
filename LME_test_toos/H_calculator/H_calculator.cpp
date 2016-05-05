@@ -6,21 +6,29 @@
 #include <math.h>
 using namespace std;
 
-vector<double> x1_sample;
-vector<double> x2_sample;
-vector<double> x3_sample;
-vector<double> x1_error;
-vector<double> x2_error;
-vector<double> x3_error;
-vector<double> h_all;
-vector<double> h_error_points;
-int DIM = 2;
-
+struct SamplePoint
+{
+	int id;
+	double x[3];
+	double h_min;
+};
+vector<SamplePoint> x_sp;
 int ReadSamplePoints();
+int Cmp(const void *a, const void *b);
+void CalcSample_H(int id);
+
+struct ErrorPoint
+{
+	double x[3];
+	int sp_id;
+	double h;
+};
+vector<ErrorPoint> x_ep;
 int ReadErrorPoints();
-void H_calculator();
+void CalcError_H();
 void WriteErrorPointH();
 
+int DIM = 2;
 int main(int argc, char* argv[])
 {
 	if (argc > 1)
@@ -32,15 +40,21 @@ int main(int argc, char* argv[])
 	{
 		return -1;
 	}
+
+	for (int i = 0; i < x_sp.size(); i++)
+	{
+		CalcSample_H(i);
+	}
+
 	if (ReadErrorPoints()!=0)
 	{
 		return -1;
 	}
-	
-	H_calculator();
+
+	CalcError_H();
 	WriteErrorPointH();
 
-	//system("pause");
+	system("pause");
 	return 0;
 }
 
@@ -53,34 +67,58 @@ int ReadSamplePoints()
 		cout << "Can not open SamplePoints.txt" << endl;
 		return -1;
 	}
+	int index = 0;
 	while (!infile.eof())
 	{
+		SamplePoint sp;
+		string lineStr = "";
+		getline(infile, lineStr);
 		if (DIM == 2)
-		{
-			double x1_temp = 0;
-			double x2_temp = 0;
-			string lineStr = "";
-			getline(infile, lineStr);
-			sscanf(lineStr.c_str(), "%lg\t%lg\t%*lg", &(x1_temp), &(x2_temp));
-			x1_sample.push_back(x1_temp);
-			x2_sample.push_back(x2_temp);
+		{		
+			sscanf(lineStr.c_str(), "%lg\t%lg\t%*lg", &(sp.x[0]), &(sp.x[1]));	
 		}
 		if (DIM == 3)
 		{
-			double x1_temp = 0;
-			double x2_temp = 0;
-			double x3_temp = 0;
-			string lineStr = "";
-			getline(infile, lineStr);
-			sscanf(lineStr.c_str(), "%lg\t%lg\t%lg\t%*lg", &(x1_temp), &(x2_temp), &(x3_temp));
-			x1_sample.push_back(x1_temp);
-			x2_sample.push_back(x2_temp);
-			x3_sample.push_back(x3_temp);
+			sscanf(lineStr.c_str(), "%lg\t%lg\t%lg\t%*lg", &(sp.x[0]), &(sp.x[1]), &(sp.x[2]));
 		}
+		sp.id = index;
+		sp.h_min = 0.0;
+		x_sp.push_back(sp);
+		index++;
 	}
 	infile.close();
 
 	return 0;
+}
+
+int Cmp(const void *a, const void *b)
+{
+	return *(double *)a > *(double *)b ? 1 : -1;
+}
+
+void CalcSample_H(int id)
+{
+	double *h_all = new double[x_sp.size()];
+	for (int i = 0; i < x_sp.size(); i++)
+	{
+		double h_temp = 0.0;
+		if (DIM == 2)
+		{
+			h_temp = sqrt((x_sp[id].x[0] - x_sp[i].x[0])*(x_sp[id].x[0] - x_sp[i].x[0]) +
+				(x_sp[id].x[1] - x_sp[i].x[1])*(x_sp[id].x[1] - x_sp[i].x[1]));
+			h_all[i] = h_temp;
+		}
+		if (DIM == 3)
+		{
+			h_temp = sqrt((x_sp[id].x[0] - x_sp[i].x[0])*(x_sp[id].x[0] - x_sp[i].x[0]) +
+				(x_sp[id].x[1] - x_sp[i].x[1])*(x_sp[id].x[1] - x_sp[i].x[1]) +
+				(x_sp[id].x[2] - x_sp[i].x[2])*(x_sp[id].x[2] - x_sp[i].x[2]));
+			h_all[i] = h_temp;
+		}
+	}
+	qsort(h_all, x_sp.size(), sizeof(h_all[0]), Cmp);	// 从小到大排序
+	x_sp[id].h_min = h_all[1];	// 取第二个h作为该点的最小h，因为第一个是到该点本身的距离，为0
+	delete[]h_all;
 }
 
 int ReadErrorPoints()
@@ -94,33 +132,22 @@ int ReadErrorPoints()
 	}
 	while (!infile.eof())
 	{
-		if (DIM == 2)
+		ErrorPoint ep;
+		string lineStr = "";
+		getline(infile, lineStr);
+		if (lineStr != "")
 		{
-			double x1_temp = 0;
-			double x2_temp = 0;
-			string lineStr = "";
-			getline(infile, lineStr);
-			if (lineStr != "")
+			if (DIM == 2)
 			{
-				sscanf(lineStr.c_str(), "%lg\t%lg", &(x1_temp), &(x2_temp));
-				x1_error.push_back(x1_temp);
-				x2_error.push_back(x2_temp);
+				sscanf(lineStr.c_str(), "%lg\t%lg", &(ep.x[0]), &(ep.x[1]));
 			}
-		}
-		if (DIM == 3)
-		{
-			double x1_temp = 0;
-			double x2_temp = 0;
-			double x3_temp = 0;
-			string lineStr = "";
-			getline(infile, lineStr);
-			if (lineStr != "")
+			if (DIM == 3)
 			{
-				sscanf(lineStr.c_str(), "%lg\t%lg\t%lg", &(x1_temp), &(x2_temp), &(x3_temp));
-				x1_error.push_back(x1_temp);
-				x2_error.push_back(x2_temp);
-				x3_error.push_back(x3_temp);
+				sscanf(lineStr.c_str(), "%lg\t%lg\t%lg", &(ep.x[0]), &(ep.x[1]), &(ep.x[2]));
 			}
+			ep.sp_id = 0;
+			ep.h = 0.0;
+			x_ep.push_back(ep);
 		}
 	}
 	infile.close();
@@ -128,65 +155,50 @@ int ReadErrorPoints()
 	return 0;
 }
 
-void H_calculator()
+void CalcError_H()
 {
-	for (int i = 0; i < x1_error.size(); i++)
+	vector<double> h_all;
+	for (int i = 0; i < x_ep.size(); i++)
 	{
 		h_all.clear();
-		if (DIM == 2)
+		for (int j = 0; j < x_sp.size(); j++)
 		{
-			double x1 = x1_error[i];
-			double x2 = x2_error[i];
 			double h_temp = 0.0;
-			for (int j = 0; j < x1_sample.size(); j++)
+			if (DIM == 2)
 			{
-				h_temp = sqrt((x1 - x1_sample[j])*(x1 - x1_sample[j]) + 
-					(x2 - x2_sample[j])*(x2 - x2_sample[j]));
+				h_temp = sqrt((x_ep[i].x[0] - x_sp[j].x[0])*(x_ep[i].x[0] - x_sp[j].x[0]) +
+					(x_ep[i].x[1] - x_sp[j].x[1])*(x_ep[i].x[1] - x_sp[j].x[1]));
 				h_all.push_back(h_temp);
 			}
-
-			double h_min = 0.0;
-			for (int k = 0; k < h_all.size(); k++)
+			if (DIM == 3)
 			{
-				if (k == 0)
-				{
-					h_min = h_all[0];
-				}
-				if (h_all[k] < h_min)
-				{
-					h_min = h_all[k];
-				}
+				h_temp = sqrt((x_ep[i].x[0] - x_sp[j].x[0])*(x_ep[i].x[0] - x_sp[j].x[0]) +
+					(x_ep[i].x[1] - x_sp[j].x[1])*(x_ep[i].x[1] - x_sp[j].x[1]) + 
+					(x_ep[i].x[2] - x_sp[j].x[2])*(x_ep[i].x[2] - x_sp[j].x[2]));
+				h_all.push_back(h_temp);
+			}		
+		}
+		
+		double h_min = 0.0;
+		for (int k = 0; k < h_all.size(); k++)
+		{
+			if (k == 0)
+			{
+				h_min = h_all[0];
 			}
-			h_error_points.push_back(h_min);
+			if (h_all[k] < h_min)
+			{
+				h_min = h_all[k];
+			}
 		}
 
-		if (DIM == 3)
+		// 将离该误差分析点最近的样本点的h_min值赋给误差分析点的h
+		for (int l = 0; l < h_all.size(); l++)
 		{
-			double x1 = x1_error[i];
-			double x2 = x2_error[i];
-			double x3 = x3_error[i];
-			double h_temp = 0.0;
-			for (int j = 0; j < x1_sample.size(); j++)
+			if (h_min == h_all[l])
 			{
-				h_temp = sqrt((x1 - x1_sample[j])*(x1 - x1_sample[j]) + 
-					(x2 - x2_sample[j])*(x2 - x2_sample[j]) +
-					(x3 - x3_sample[j])*(x3 - x3_sample[j]));
-				h_all.push_back(h_temp);
+				x_ep[i].h = x_sp[l].h_min;
 			}
-
-			double h_min = 0.0;
-			for (int k = 0; k < h_all.size(); k++)
-			{
-				if (k == 0)
-				{
-					h_min = h_all[0];
-				}
-				if (h_all[k] < h_min)
-				{
-					h_min = h_all[k];
-				}
-			}
-			h_error_points.push_back(h_min);
 		}
 	}
 }
@@ -196,19 +208,19 @@ void WriteErrorPointH()
 	ofstream ofs;
 	ofs.open("h.txt", ios::out|ios::trunc);
 
-	for (int i = 0; i < h_error_points.size(); i++)
+	for (int i = 0; i < x_ep.size(); i++)
 	{
-		if (i < h_error_points.size() - 1)
+		if (i < x_ep.size() - 1)
 		{
-			ofs << h_error_points[i] << endl;
-			cout << h_error_points[i] << endl;
+			ofs << x_ep[i].h << endl;
+			cout << x_ep[i].h << endl;
 		}
 
 		//aviod to output last line with an empty line
-		if (i == h_error_points.size() -1 )
+		if (i == x_ep.size() -1 )
 		{
-			ofs << h_error_points[i];
-			cout << h_error_points[i];
+			ofs << x_ep[i].h;
+			cout << x_ep[i].h;
 		}
 	}
 	ofs.close();
