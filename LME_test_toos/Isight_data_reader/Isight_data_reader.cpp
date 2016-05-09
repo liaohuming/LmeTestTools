@@ -8,7 +8,30 @@ using namespace std;
 int main(int argc, char* argv[])
 {	
 	int DIM = 2;
-	if (argc>1)
+
+	if (argc != 2)
+	{
+		cout << "missing inputs:" << endl;
+		cout << "./1_isightDataReader <dimension>" << endl;
+		cout << "2: 2 dimension" << endl;
+		cout << "3: 3 dimension" << endl;
+		cout << "only support 2 and 3 dimension, more dimensions being developed." << endl;
+
+		cout << endl;
+		cout << "necessary files:" << endl;
+		cout << "RBF-Init-Data-Points.txt" << endl;
+		cout << "RBF-Actual-Error-Points.txt" << endl;
+		cout << "RBF-Predicted-Error-Points.txt" << endl;
+		cout << "RSM2-Predicted-Error-Points" << endl;
+		cout << "RSM4-Predicted-Error-Points" << endl;
+		cout << "Kriging1-Predicted-Error-Points.txt" << endl;
+		cout << "Kriging2-Predicted-Error-Points.txt" << endl;
+		cout << "Kriging3-Predicted-Error-Points.txt" << endl;
+		cout << "Kriging4-Predicted-Error-Points.txt" << endl;
+
+		return -1;
+	}
+	if (argc == 2)
 	{
 		DIM = atoi(argv[1]);
 	}
