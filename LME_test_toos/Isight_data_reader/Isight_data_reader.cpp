@@ -13,10 +13,7 @@ int main(int argc, char* argv[])
 	{
 		cout << "missing inputs:" << endl;
 		cout << "./1_isightDataReader <dimension>" << endl;
-		cout << "2: 2 dimension" << endl;
-		cout << "3: 3 dimension" << endl;
-		cout << "only support 2 and 3 dimension, more dimensions being developed." << endl;
-
+		cout << "only support 2-10 dimension, more dimensions being developed." << endl;
 		cout << endl;
 		cout << "necessary files:" << endl;
 		cout << "RBF-Init-Data-Points.txt" << endl;
@@ -40,6 +37,13 @@ int main(int argc, char* argv[])
 	vector<string> x1_vector;
 	vector<string> x2_vector;
 	vector<string> x3_vector;
+	vector<string> x4_vector;
+	vector<string> x5_vector;
+	vector<string> x6_vector;
+	vector<string> x7_vector;
+	vector<string> x8_vector;
+	vector<string> x9_vector;
+	vector<string> x10_vector;
 	vector<string> y_vector;
 
 	ifstream infile;
@@ -92,6 +96,202 @@ int main(int argc, char* argv[])
 					x3_vector.push_back(x3_str);
 					y_vector.push_back(y_str);
 				}
+				if (DIM == 4)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					x4_vector.push_back(x4_str);
+					y_vector.push_back(y_str);
+				}
+				if (DIM == 5)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					x4_vector.push_back(x4_str);
+					x5_vector.push_back(x5_str);
+					y_vector.push_back(y_str);
+				}
+				if (DIM == 6)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					x4_vector.push_back(x4_str);
+					x5_vector.push_back(x5_str);
+					x6_vector.push_back(x6_str);
+					y_vector.push_back(y_str);
+				}
+				if (DIM == 7)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					x4_vector.push_back(x4_str);
+					x5_vector.push_back(x5_str);
+					x6_vector.push_back(x6_str);
+					x7_vector.push_back(x7_str);
+					y_vector.push_back(y_str);
+				}
+				if (DIM == 8)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char x8_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(x8_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string x8_str = string(x8_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					x4_vector.push_back(x4_str);
+					x5_vector.push_back(x5_str);
+					x6_vector.push_back(x6_str);
+					x7_vector.push_back(x7_str);
+					x8_vector.push_back(x8_str);
+					y_vector.push_back(y_str);
+				}
+				if (DIM == 9)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char x8_char[255];
+					char x9_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(x8_char), &(x9_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string x8_str = string(x8_char);
+					string x9_str = string(x9_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					x4_vector.push_back(x4_str);
+					x5_vector.push_back(x5_str);
+					x6_vector.push_back(x6_str);
+					x7_vector.push_back(x7_str);
+					x8_vector.push_back(x8_str);
+					x9_vector.push_back(x9_str);
+					y_vector.push_back(y_str);
+				}
+				if (DIM == 10)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char x8_char[255];
+					char x9_char[255];
+					char x10_char[255];
+					char y_char[255];
+					sscanf(lineStrOfSamplingPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(x8_char), &(x9_char), &(x10_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string x8_str = string(x8_char);
+					string x9_str = string(x9_char);
+					string x10_str = string(x10_char);
+					string y_str = string(y_char);
+					x1_vector.push_back(x1_str);
+					x2_vector.push_back(x2_str);
+					x3_vector.push_back(x3_str);
+					x4_vector.push_back(x4_str);
+					x5_vector.push_back(x5_str);
+					x6_vector.push_back(x6_str);
+					x7_vector.push_back(x7_str);
+					x8_vector.push_back(x8_str);
+					x9_vector.push_back(x9_str);
+					x10_vector.push_back(x10_str);
+					y_vector.push_back(y_str);
+				}
 			}
 		}
 	}
@@ -103,7 +303,7 @@ int main(int argc, char* argv[])
 	ofs_sampling_points.open("SamplePoints.txt", ios::out | ios::trunc);
 	for (int i = 0; i < x1_vector.size(); i++)
 	{
-		if (DIM==2)
+		if (DIM == 2)
 		{
 			if (i < x1_vector.size() - 1)
 			{
@@ -115,7 +315,7 @@ int main(int argc, char* argv[])
 			}
 			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << y_vector[i] << endl;
 		}
-		if (DIM==3)
+		if (DIM == 3)
 		{
 			if (i < x1_vector.size() - 1)
 			{
@@ -127,6 +327,90 @@ int main(int argc, char* argv[])
 			}
 			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << y_vector[i] << endl;
 		}
+		if (DIM == 4)
+		{
+			if (i < x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << y_vector[i] << endl;
+			}
+			if (i == x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << y_vector[i];
+			}
+			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << y_vector[i] << endl;
+		}
+		if (DIM == 5)
+		{
+			if (i < x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << y_vector[i] << endl;
+			}
+			if (i == x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << y_vector[i];
+			}
+			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << y_vector[i] << endl;
+		}
+		if (DIM == 6)
+		{
+			if (i < x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << y_vector[i] << endl;
+			}
+			if (i == x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << y_vector[i];
+			}
+			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << y_vector[i] << endl;
+		}
+		if (DIM == 7)
+		{
+			if (i < x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << y_vector[i] << endl;
+			}
+			if (i == x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << y_vector[i];
+			}
+			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << y_vector[i] << endl;
+		}
+		if (DIM == 8)
+		{
+			if (i < x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << y_vector[i] << endl;
+			}
+			if (i == x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << y_vector[i];
+			}
+			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << y_vector[i] << endl;
+		}
+		if (DIM == 9)
+		{
+			if (i < x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << x9_vector[i] << "\t" << y_vector[i] << endl;
+			}
+			if (i == x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << x9_vector[i] << "\t" << y_vector[i];
+			}
+			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << x9_vector[i] << "\t" << y_vector[i] << endl;
+		}
+		if (DIM == 10)
+		{
+			if (i < x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << x9_vector[i] << "\t" << x10_vector[i] << "\t" << y_vector[i] << endl;
+			}
+			if (i == x1_vector.size() - 1)
+			{
+				ofs_sampling_points << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << x9_vector[i] << "\t" << x10_vector[i] << "\t" << y_vector[i];
+			}
+			cout << x1_vector[i] << "\t" << x2_vector[i] << "\t" << x3_vector[i] << "\t" << x4_vector[i] << "\t" << x5_vector[i] << "\t" << x6_vector[i] << "\t" << x7_vector[i] << "\t" << x8_vector[i] << "\t" << x9_vector[i] << "\t" << x10_vector[i] << "\t" << y_vector[i] << endl;
+		}
 	}
 	ofs_sampling_points.close();
 
@@ -134,6 +418,13 @@ int main(int argc, char* argv[])
 	vector<string> x1_error_vector;
 	vector<string> x2_error_vector;
 	vector<string> x3_error_vector;
+	vector<string> x4_error_vector;
+	vector<string> x5_error_vector;
+	vector<string> x6_error_vector;
+	vector<string> x7_error_vector;
+	vector<string> x8_error_vector;
+	vector<string> x9_error_vector;
+	vector<string> x10_error_vector;
 	vector<string> y_error_vector;
 	infile.open("RBF-Actual-Error-Points.txt");
 	if (!infile.is_open())
@@ -184,6 +475,202 @@ int main(int argc, char* argv[])
 					x3_error_vector.push_back(x3_str);
 					y_error_vector.push_back(y_str);
 				}
+				if (DIM == 4)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					x4_error_vector.push_back(x4_str);
+					y_error_vector.push_back(y_str);
+				}
+				if (DIM == 5)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					x4_error_vector.push_back(x4_str);
+					x5_error_vector.push_back(x5_str);
+					y_error_vector.push_back(y_str);
+				}
+				if (DIM == 6)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					x4_error_vector.push_back(x4_str);
+					x5_error_vector.push_back(x5_str);
+					x6_error_vector.push_back(x6_str);
+					y_error_vector.push_back(y_str);
+				}
+				if (DIM == 7)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					x4_error_vector.push_back(x4_str);
+					x5_error_vector.push_back(x5_str);
+					x6_error_vector.push_back(x6_str);
+					x7_error_vector.push_back(x7_str);
+					y_error_vector.push_back(y_str);
+				}
+				if (DIM == 8)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char x8_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(x8_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string x8_str = string(x8_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					x4_error_vector.push_back(x4_str);
+					x5_error_vector.push_back(x5_str);
+					x6_error_vector.push_back(x6_str);
+					x7_error_vector.push_back(x7_str);
+					x8_error_vector.push_back(x8_str);
+					y_error_vector.push_back(y_str);
+				}
+				if (DIM == 9)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char x8_char[255];
+					char x9_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(x8_char), &(x9_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string x8_str = string(x8_char);
+					string x9_str = string(x9_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					x4_error_vector.push_back(x4_str);
+					x5_error_vector.push_back(x5_str);
+					x6_error_vector.push_back(x6_str);
+					x7_error_vector.push_back(x7_str);
+					x8_error_vector.push_back(x8_str);
+					x9_error_vector.push_back(x9_str);
+					y_error_vector.push_back(y_str);
+				}
+				if (DIM == 10)
+				{
+					char x1_char[255];
+					char x2_char[255];
+					char x3_char[255];
+					char x4_char[255];
+					char x5_char[255];
+					char x6_char[255];
+					char x7_char[255];
+					char x8_char[255];
+					char x9_char[255];
+					char x10_char[255];
+					char y_char[255];
+					sscanf(lineStrOfErrorPoints.c_str(), "%*s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", &(x1_char), &(x2_char), &(x3_char), &(x4_char), &(x5_char), &(x6_char), &(x7_char), &(x8_char), &(x9_char), &(x10_char), &(y_char));
+					string x1_str = string(x1_char);
+					string x2_str = string(x2_char);
+					string x3_str = string(x3_char);
+					string x4_str = string(x4_char);
+					string x5_str = string(x5_char);
+					string x6_str = string(x6_char);
+					string x7_str = string(x7_char);
+					string x8_str = string(x8_char);
+					string x9_str = string(x9_char);
+					string x10_str = string(x10_char);
+					string y_str = string(y_char);
+					x1_error_vector.push_back(x1_str);
+					x2_error_vector.push_back(x2_str);
+					x3_error_vector.push_back(x3_str);
+					x4_error_vector.push_back(x4_str);
+					x5_error_vector.push_back(x5_str);
+					x6_error_vector.push_back(x6_str);
+					x7_error_vector.push_back(x7_str);
+					x8_error_vector.push_back(x8_str);
+					x9_error_vector.push_back(x9_str);
+					x10_error_vector.push_back(x10_str);
+					y_error_vector.push_back(y_str);
+				}
 			}
 		}
 	}
@@ -191,14 +678,14 @@ int main(int argc, char* argv[])
 	
 
 // 误差分析点在Uniform_sampler中生成，此处不需要再输出
-/*
+
 	// Output error analysis points，最后不输出空行
 	cout << "ErrorPoints" << endl;
 	ofstream ofs_error_points;
 	ofs_error_points.open("ErrorPoints.txt", ios::out | ios::trunc);
 	for (int i = 0; i < x1_error_vector.size(); i++)
 	{
-		if (DIM==2)
+		if (DIM == 2)
 		{
 			if (i < x1_error_vector.size() - 1)
 			{
@@ -210,7 +697,7 @@ int main(int argc, char* argv[])
 			}
 			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << endl;
 		}
-		if (DIM==3)
+		if (DIM == 3)
 		{
 			if (i < x1_error_vector.size() - 1)
 			{
@@ -222,10 +709,94 @@ int main(int argc, char* argv[])
 			}
 			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << endl;
 		}
+		if (DIM == 4)
+		{
+			if (i < x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << endl;
+			}
+			if (i == x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i];
+			}
+			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << endl;
+		}
+		if (DIM == 5)
+		{
+			if (i < x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << endl;
+			}
+			if (i == x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i];
+			}
+			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << endl;
+		}
+		if (DIM == 6)
+		{
+			if (i < x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << endl;
+			}
+			if (i == x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i];
+			}
+			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << endl;
+		}
+		if (DIM == 7)
+		{
+			if (i < x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << endl;
+			}
+			if (i == x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i];
+			}
+			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << endl;
+		}
+		if (DIM == 8)
+		{
+			if (i < x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << endl;
+			}
+			if (i == x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i];
+			}
+			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << endl;
+		}
+		if (DIM == 9)
+		{
+			if (i < x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << "\t" << x9_error_vector[i] << endl;
+			}
+			if (i == x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << "\t" << x9_error_vector[i];
+			}
+			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << "\t" << x9_error_vector[i] << endl;
+		}
+		if (DIM == 10)
+		{
+			if (i < x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << "\t" << x9_error_vector[i] << "\t" << x10_error_vector[i] << endl;
+			}
+			if (i == x1_error_vector.size() - 1)
+			{
+				ofs_error_points << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << "\t" << x9_error_vector[i] << "\t" << x10_error_vector[i];
+			}
+			cout << x1_error_vector[i] << "\t" << x2_error_vector[i] << "\t" << x3_error_vector[i] << "\t" << x4_error_vector[i] << "\t" << x5_error_vector[i] << "\t" << x6_error_vector[i] << "\t" << x7_error_vector[i] << "\t" << x8_error_vector[i] << "\t" << x9_error_vector[i] << "\t" << x10_error_vector[i] << endl;
+		}
 		
 	}
 	ofs_error_points.close();
-*/
+
 
 	// Output error actual value，最后不输出空行
 	cout << "ErrorPoints_actual_value.txt" << endl;
@@ -272,6 +843,34 @@ int main(int argc, char* argv[])
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
+			if (DIM == 4)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 5)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 6)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 7)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 8)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 9)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 10)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
 			string y_str = string(y_char);
 			Isight_predicted_data.push_back(y_str);
 		}
@@ -299,6 +898,34 @@ int main(int argc, char* argv[])
 			if (DIM == 3)
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 4)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 5)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 6)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 7)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 8)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 9)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 10)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
 			string y_str = string(y_char);
 			Isight_predicted_data.push_back(y_str);
@@ -328,6 +955,34 @@ int main(int argc, char* argv[])
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
+			if (DIM == 4)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 5)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 6)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 7)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 8)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 9)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 10)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
 			string y_str = string(y_char);
 			Isight_predicted_data.push_back(y_str);
 		}
@@ -355,6 +1010,34 @@ int main(int argc, char* argv[])
 			if (DIM == 3)
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 4)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 5)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 6)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 7)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 8)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 9)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 10)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
 			string y_str = string(y_char);
 			Isight_predicted_data.push_back(y_str);
@@ -384,6 +1067,34 @@ int main(int argc, char* argv[])
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
+			if (DIM == 4)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 5)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 6)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 7)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 8)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 9)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 10)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
 			string y_str = string(y_char);
 			Isight_predicted_data.push_back(y_str);
 		}
@@ -411,6 +1122,34 @@ int main(int argc, char* argv[])
 			if (DIM == 3)
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 4)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 5)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 6)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 7)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 8)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 9)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 10)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
 			string y_str = string(y_char);
 			Isight_predicted_data.push_back(y_str);
@@ -440,6 +1179,34 @@ int main(int argc, char* argv[])
 			{
 				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
 			}
+			if (DIM == 4)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 5)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 6)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 7)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 8)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 9)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
+			if (DIM == 10)
+			{
+				sscanf(lineStr.c_str(), "%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%*s\t%s", &(y_char));
+			}
 			string y_str = string(y_char);
 			Isight_predicted_data.push_back(y_str);
 		}
@@ -460,8 +1227,7 @@ int main(int argc, char* argv[])
 		{
 			ofs << Isight_predicted_data[i];
 			cout << Isight_predicted_data[i];
-		}
-		
+		}	
 	}
 	ofs.close();
 	//system("pause");

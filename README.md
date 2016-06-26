@@ -72,6 +72,15 @@ Kriging4-Predicted-Error-Points.txt
 * 修改了lme_test主程序，当用户输入参数不正确时给出提示
 
 
+2016年6月26日00:04:03
+
+* 扩展Isight_data_reader.cpp 至多维情况（目前可以处理2-10维的输入数据）
+* 其中误差分析点改为用isight生成，在Isight_data_reader中输出ErrorPoints.txt
+* 扩展lme_highDim_20160625.cpp 至多维情况（目前可以处理2-10维的输入数据）
+* 存在几个问题：
+	1）代理模型精度
+	2）误差分析点抽样方式现在采用的是随机抽样（高维情况下均匀抽样点数会非常多）
+	3）样本点边界点数（高维情况下边界点数很多）
 
 
 
