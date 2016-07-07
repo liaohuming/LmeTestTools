@@ -83,9 +83,9 @@ Kriging4-Predicted-Error-Points.txt
 	3）样本点边界点数（高维情况下边界点数很多）
 
 
+2016年7月6日22:30:09
 
-
-
+* 扩展Uniform_sampler.cpp 至多维情况（目前可以处理2-10维的输入数据）
 
 
 
