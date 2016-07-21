@@ -88,6 +88,11 @@ Kriging4-Predicted-Error-Points.txt
 * 扩展Uniform_sampler.cpp 至多维情况（目前可以处理2-10维的输入数据）
 
 
+2016年7月21日02:07:55
+
+* 扩展Uniform_sampler.cpp，增加了单独生成边界点（Boundary points）的功能
+
+
 
 
 
