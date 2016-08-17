@@ -90,11 +90,12 @@ Kriging4-Predicted-Error-Points.txt
 
 2016年7月21日02:07:55
 
-* 扩展Uniform_sampler.cpp，增加了单独生成边界点（Boundary points）的功能
+* 扩展Uniform_sampler.cpp增加了单独生成边界点（Boundary points）的功能
 
 
+2016年8月11日16:57:07
 
-
+* 完成论文，投稿至[Structural and Multidisciplinary Optimization][2]，希望会有好的结果。
 
 
 
@@ -136,3 +137,4 @@ Kriging4-Predicted-Error-Points.txt
 
 
 [1]: http://liaohuming.net/2016/03/31/20160331-%E5%A4%9A%E6%80%9D%E8%80%83%EF%BC%8C%E5%8B%A4%E7%AC%94%E8%AE%B0/
+[2]: http://link.springer.com/journal/158
